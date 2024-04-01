@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    include:
+      - secret
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        debug: true
+        smtp.auth: true
+        smtp.timeout: 50000 # SMTP 서버에 연결을 시도하고 응답을 기다리는 최대 시간이 50,000ms
+        smtp.starttls.enable: true
+
+  data:
+    redis:
+      mail:
+        host: localhost # 임시 방편으로 로컬에서 테스트를 위해 설정
+        port: 6379
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/security?serverTimezone=Asia/Seoul
+    username: cos
+    password: cos1234
+
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    #        show_sql: true
+    hibernate:
+      ddl-auto: create
